@@ -5,9 +5,16 @@ const { Server } = require("socket.io");
 const app = express();
 const server = http.createServer(app);
 
+app.use(cors({
+  origin: "https://coderelay-app.vercel.app",
+  credentials: true,
+}));
+
 const io = new Server(server, {
   cors: {
-    origin: "https://coderelay-app.vercel.app/",
+    origin: "https://coderelay-app.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true
   },
 });
 
